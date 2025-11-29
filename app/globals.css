@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  /* Brand Colors */
+  --primary: #661EDA;
+  /* Vibrant Purple (Logo Base) */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #18A7A0;
+  /* Teal (Logo Base) */
+  --secondary-foreground: #FFFFFF;
+
+  --accent: #80DDD6;
+  /* Mint (Highlight) */
+  --accent-foreground: #000000;
+
+  /* Backgrounds */
+  --background: #320F6A;
+  /* Deep Purple as requested */
+  --foreground: #FFFFFF;
+  /* Pure White */
+
+  --muted: rgba(255, 255, 255, 0.1);
+  /* Glassmorphism for muted */
+  --muted-foreground: #F1F5F9;
+  /* Slate 100 - High Contrast */
+
+  --card: rgba(255, 255, 255, 0.05);
+  /* Glassmorphism for cards */
+  --card-foreground: #FFFFFF;
+
+  --border: #661EDA;
+  /* Vibrant Purple for borders */
+  --input: rgba(255, 255, 255, 0.1);
+
+  /* Dark Mode (Optional, but good to have ready) */
+  --dark-background: #0f172a;
+  /* Slate 900 */
+  --dark-foreground: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* We can override these if we want a dark mode, 
+       but for now let's stick to the requested "warm" feel which is usually light.
+       If the user wants dark mode, we can enable it. 
+       For now, I'll keep the light theme as default for "closeness/human".
+    */
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Utilities */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold tracking-tight;
+}
+
+h1 {
+  @apply text-4xl md:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-5xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
