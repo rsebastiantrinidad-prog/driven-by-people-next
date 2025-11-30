@@ -28,7 +28,7 @@ export function CTA() {
                         </Link>
                     </Button>
                     <p className="text-sm text-[#80DDD6]/80 mt-4 sm:mt-0 sm:ml-4">
-                        Sin compromiso. Solo claridad.
+                        Claridad operativa para tu empresa.
                     </p>
                 </div>
             </div>

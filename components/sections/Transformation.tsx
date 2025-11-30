@@ -54,7 +54,7 @@ export function Transformation() {
                                 }`}
                         >
                             {/* Content */}
-                            <div className="flex-1 pl-16 md:pl-0 md:px-12 w-full">
+                            <div className="flex-1 pl-16 md:px-12 w-full">
                                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                                     <h3 className="text-xl font-bold text-[#320F6A] mb-2">
                                         {step.title}
