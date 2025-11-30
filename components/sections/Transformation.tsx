@@ -2,67 +2,79 @@
 
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { Search, Compass, Rocket, BarChart } from "lucide-react";
 
-const services = [
+const steps = [
     {
-        title: "Implementación PMO 60 días",
-        description: "Estructura completa de gestión de proyectos adaptada a tu empresa.",
-        features: ["Procesos documentados", "Herramientas optimizadas", "Métricas de seguimiento"],
+        icon: <Search className="w-8 h-8 text-[#320F6A]" />,
+        title: "Semana 1-2: Diagnóstico Profundo",
+        description: "Analizamos tus flujos de trabajo, comunicación y cuellos de botella. Entendemos la realidad de tu equipo sin filtros.",
     },
     {
-        title: "Perfilado DISC del Equipo",
-        description: "Análisis de personalidades para optimizar la comunicación y colaboración.",
-        features: ["Evaluación individual", "Mapeo de equipos", "Estrategias de comunicación"],
+        icon: <Compass className="w-8 h-8 text-[#320F6A]" />,
+        title: "Semana 3-4: Diseño del Sistema",
+        description: "Co-creamos los nuevos procesos y rituales. Definimos roles claros y herramientas que realmente se usen.",
     },
     {
-        title: "Arquitectura de Procesos",
-        description: "Diseño de flujos de trabajo que eliminan cuellos de botella.",
-        features: ["Mapeo de procesos", "Automatizaciones", "Documentación clara"],
+        icon: <Rocket className="w-8 h-8 text-[#320F6A]" />,
+        title: "Semana 5-6: Implementación Ágil",
+        description: "Desplegamos los cambios en iteraciones cortas. Acompañamos a tu equipo en la adopción para asegurar que funcione.",
     },
     {
-        title: "Coaching de Liderazgo",
-        description: "Desarrollo de habilidades directivas para liderar el cambio.",
-        features: ["Sesiones personalizadas", "Herramientas de liderazgo", "Seguimiento continuo"],
+        icon: <BarChart className="w-8 h-8 text-[#320F6A]" />,
+        title: "Semana 7-8: Optimización y Entrega",
+        description: "Ajustamos basado en feedback real y te entregamos un sistema operativo documentado y funcionando.",
     },
 ];
 
 export function Transformation() {
     return (
-        <Section id="servicios" className="bg-[#320F6A]">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Transformación en 60 Días</h2>
-                <p className="text-[#F1F5F9] text-lg max-w-2xl mx-auto">
-                    Un enfoque integral que combina metodología PMO con análisis DISC.
+        <Section id="proceso" className="bg-[#F1F5F9]">
+            <div className="text-center mb-12 md:mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#320F6A]">Transformación en 56 Días</h2>
+                <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+                    Un proceso estructurado para pasar del caos a la claridad sin detener tu operación.
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-                {services.map((service, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-[#18A7A0]/30 hover:shadow-md transition-all group"
-                    >
-                        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[#80DDD6] transition-colors">
-                            {service.title}
-                        </h3>
-                        <p className="text-slate-100 mb-6 leading-relaxed">
-                            {service.description}
-                        </p>
-                        <ul className="space-y-3">
-                            {service.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center text-sm text-slate-200">
-                                    <CheckCircle2 className="w-5 h-5 text-[#80DDD6] mr-3 flex-shrink-0" />
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                ))}
+            <div className="container-custom max-w-4xl">
+                <div className="relative space-y-8 md:space-y-12">
+                    {/* Vertical Line */}
+                    <div className="absolute left-8 md:left-1/2 top-4 bottom-4 w-0.5 bg-[#320F6A]/20 -translate-x-1/2 hidden md:block" />
+                    <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-[#320F6A]/20 md:hidden" />
+
+                    {steps.map((step, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className={`relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center ${index % 2 === 0 ? "md:flex-row-reverse" : ""
+                                }`}
+                        >
+                            {/* Content */}
+                            <div className="flex-1 pl-16 md:pl-0 md:px-12 w-full">
+                                <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                                    <h3 className="text-xl font-bold text-[#320F6A] mb-2">
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-slate-600 leading-relaxed">
+                                        {step.description}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Icon/Marker */}
+                            <div className="absolute left-0 md:left-1/2 -translate-x-0 md:-translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-[#80DDD6] border-4 border-white shadow-sm z-10">
+                                {step.icon}
+                            </div>
+
+                            {/* Spacer for desktop alignment */}
+                            <div className="flex-1 hidden md:block" />
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </Section>
     );

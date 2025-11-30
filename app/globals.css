@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-quicksand);
+  --font-heading: var(--font-smooch);
 }
 
 :root {
@@ -57,7 +57,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-quicksand), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -77,17 +77,18 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-smooch), sans-serif;
   @apply font-bold tracking-tight;
 }
 
 h1 {
-  @apply text-4xl md:text-6xl;
+  @apply text-5xl md:text-7xl;
 }
 
 h2 {
-  @apply text-3xl md:text-5xl;
+  @apply text-4xl md:text-6xl;
 }
 
 h3 {
-  @apply text-2xl md:text-3xl;
+  @apply text-3xl md:text-4xl;
 }

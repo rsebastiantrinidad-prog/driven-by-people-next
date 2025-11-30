@@ -8,19 +8,20 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[var(--background)]">
+        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-24 pb-12 md:pt-20 md:pb-0 bg-[var(--background)]">
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#661EDA]/30 via-transparent to-transparent" />
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#18A7A0]/20 via-transparent to-transparent" />
 
-            <div className="container-custom grid lg:grid-cols-2 gap-12 items-center">
+            <div className="container-custom grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="space-y-8"
+                    className="flex flex-col items-start space-y-6 md:space-y-8"
                 >
-                    <div className="relative w-64 h-24 md:w-80 md:h-32">
+                    {/* Logo in Hero - Mobile Optimized */}
+                    <div className="relative w-48 h-16 md:w-80 md:h-32 self-start">
                         <Image
                             src="/logo-colored.png"
                             alt="Driven by People Logo"
@@ -35,26 +36,26 @@ export function Hero() {
                         Claridad Estratégica
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] text-white">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] text-white tracking-tight">
                         Porque detrás de cada proyecto hay <span className="text-[#80DDD6]">personas</span> que se comunican.
                     </h1>
 
-                    <p className="text-xl text-[#F1F5F9] max-w-lg leading-relaxed">
+                    <p className="text-lg md:text-xl text-[#F1F5F9] max-w-lg leading-relaxed">
                         Convertimos el caos organizacional en claridad estratégica. Gestión de proyectos humana para equipos que buscan resultados reales.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <Button size="lg" className="text-lg h-14 px-8 bg-[#80DDD6] text-black hover:bg-[#80DDD6]/90" asChild>
+                    <div className="flex flex-col w-full sm:w-auto sm:flex-row gap-4 pt-2">
+                        <Button size="lg" className="w-full sm:w-auto text-lg h-14 px-8 bg-[#80DDD6] text-black hover:bg-[#80DDD6]/90 active:scale-95 transition-transform" asChild>
                             <Link href="https://calendly.com/rsebastian-trinidad/30min" target="_blank">
                                 Agenda tu Diagnóstico
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="text-lg h-14 px-8 border-[#661EDA] text-[#F1F5F9] hover:bg-[#661EDA]/20" asChild>
+                        {/*<Button size="lg" variant="outline" className="w-full sm:w-auto text-lg h-14 px-8 border-[#661EDA] text-[#F1F5F9] hover:bg-[#661EDA]/20 active:scale-95 transition-transform" asChild>
                             <Link href="#servicios">
                                 Ver Servicios
                             </Link>
-                        </Button>
+                        </Button>*/}
                     </div>
                 </motion.div>
 

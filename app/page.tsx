@@ -14,7 +14,7 @@ export default function Home() {
       <Founder />
       <Challenges />
       <Transformation />
-      <Methodology />
+      {/* <Methodology /> */}
       <CTA />
     </main>
   );

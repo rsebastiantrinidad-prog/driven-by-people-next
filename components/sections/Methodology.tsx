@@ -1,53 +1,105 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
-const discTypes = [
-    { letter: "D", name: "Dominante", color: "bg-[#661EDA]", desc: "Directo, orientado a resultados, firme." },
-    { letter: "I", name: "Influyente", color: "bg-[#9163EA]", desc: "Extrovertido, entusiasta, persuasivo." },
-    { letter: "S", name: "Estable", color: "bg-[#18A7A0]", desc: "Paciente, leal, buen oyente." },
-    { letter: "C", name: "Concienzudo", color: "bg-[#26514F]", desc: "Analítico, preciso, diplomático." },
+const profiles = [
+    {
+        id: "D",
+        title: "Dominante",
+        description: "Orientado a resultados, directo y decisivo. Puede parecer brusco bajo presión.",
+        color: "bg-red-500",
+        textColor: "text-red-500",
+    },
+    {
+        id: "I",
+        title: "Influyente",
+        description: "Entusiasta, optimista y persuasivo. Puede perder el foco en los detalles.",
+        color: "bg-yellow-500",
+        textColor: "text-yellow-500",
+    },
+    {
+        id: "S",
+        title: "Estable",
+        description: "Paciente, leal y buen oyente. Puede resistirse al cambio repentino.",
+        color: "bg-green-500",
+        textColor: "text-green-500",
+    },
+    {
+        id: "C",
+        title: "Concienzudo",
+        description: "Analítico, preciso y sistemático. Puede paralizarse por el análisis.",
+        color: "bg-blue-500",
+        textColor: "text-blue-500",
+    },
 ];
 
 export function Methodology() {
-    return (
-        <Section className="bg-[#320F6A]">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div className="space-y-6">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">Metodología DISC</h2>
-                    <p className="text-lg text-[#F1F5F9] leading-relaxed">
-                        Descubre cómo los diferentes tipos de personalidad pueden trabajar en perfecta armonía. No se trata solo de habilidades técnicas, sino de entender cómo cada miembro del equipo procesa la información y se comunica.
-                    </p>
-                    <p className="text-lg text-[#F1F5F9] leading-relaxed">
-                        Al mapear los perfiles DISC de tu equipo, podemos asignar roles que se alineen con sus fortalezas naturales, reduciendo la fricción y aumentando la satisfacción laboral.
-                    </p>
-                    <Button asChild size="lg" className="mt-4 bg-[#80DDD6] text-black hover:bg-[#80DDD6]/90">
-                        <Link href="https://calendly.com/rsebastian-trinidad/30min" target="_blank">
-                            Descubre tu Perfil DISC
-                        </Link>
-                    </Button>
-                </div>
+    const [activeProfile, setActiveProfile] = useState(profiles[0]);
 
-                <div className="grid grid-cols-2 gap-4">
-                    {discTypes.map((type, index) => (
+    return (
+        <Section id="metodologia" className="bg-white">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#320F6A]">Metodología DISC</h2>
+                <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+                    No gestionamos "recursos", gestionamos personalidades. Entender quién es quién es la clave.
+                </p>
+            </div>
+
+            <div className="container-custom max-w-5xl">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                    {/* Interactive Disc Wheel / Selector */}
+                    <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                        {profiles.map((profile) => (
+                            <button
+                                key={profile.id}
+                                onClick={() => setActiveProfile(profile)}
+                                className={cn(
+                                    "aspect-square rounded-2xl flex flex-col items-center justify-center p-4 transition-all duration-300 border-2",
+                                    activeProfile.id === profile.id
+                                        ? `border-${profile.color.split("-")[1]}-500 shadow-lg scale-105 bg-white`
+                                        : "border-slate-100 bg-slate-50 hover:bg-slate-100"
+                                )}
+                            >
+                                <span className={cn("text-4xl font-bold mb-2", profile.textColor)}>
+                                    {profile.id}
+                                </span>
+                                <span className="text-sm font-medium text-slate-600">
+                                    {profile.title}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Description Panel */}
+                    <div className="w-full md:w-1/2">
                         <motion.div
-                            key={type.letter}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-[#18A7A0]/30 text-center hover:shadow-lg transition-all"
+                            key={activeProfile.id}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-slate-50 p-8 rounded-3xl border border-slate-200"
                         >
-                            <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center text-2xl font-bold text-white mb-4 ${type.color}`}>
-                                {type.letter}
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl", activeProfile.color)}>
+                                    {activeProfile.id}
+                                </div>
+                                <h3 className="text-2xl font-bold text-[#320F6A]">
+                                    {activeProfile.title}
+                                </h3>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-white">{type.name}</h3>
-                            <p className="text-sm text-slate-100">{type.desc}</p>
+                            <p className="text-lg text-slate-700 leading-relaxed">
+                                {activeProfile.description}
+                            </p>
+                            <div className="mt-6 pt-6 border-t border-slate-200">
+                                <p className="text-sm text-slate-500 italic">
+                                    "Para liderar a un {activeProfile.title}, necesitas..."
+                                </p>
+                            </div>
                         </motion.div>
-                    ))}
+                    </div>
                 </div>
             </div>
         </Section>

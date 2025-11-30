@@ -9,53 +9,58 @@ import Image from "next/image";
 export function Founder() {
     return (
         <Section id="historia" className="bg-[#320F6A] overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="container-custom grid lg:grid-cols-2 gap-12 items-center">
+                {/* Image - Stacked on top for mobile or kept side-by-side on desktop */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="relative"
+                    transition={{ duration: 0.6 }}
+                    className="relative h-[400px] lg:h-[600px] w-full rounded-2xl overflow-hidden order-first lg:order-none"
                 >
-                    {/* Founder Image */}
-                    <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-[#18A7A0]/30 shadow-2xl">
-                        <Image
-                            src="/sebastian.jpg"
-                            alt="Sebastián Trinidad"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="absolute -bottom-6 -right-6 bg-[#661EDA] text-white p-6 rounded-xl shadow-lg max-w-xs hidden md:block border border-[#9163EA]">
-                        <p className="font-bold text-lg">"Las personas primero, los resultados fluyen."</p>
+                    <Image
+                        src="/sebastian.jpg"
+                        alt="Sebastián Trinidad"
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#320F6A]/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-6 md:p-8">
+                        <p className="text-white font-bold text-xl">Sebastián Trinidad</p>
+                        <p className="text-[#80DDD6]">Fundador & Estratega</p>
                     </div>
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="space-y-6"
+                    transition={{ duration: 0.6 }}
+                    className="space-y-6 md:space-y-8"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-white">
-                        De la Frustración al Propósito
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                        Por Qué Existe <span className="text-[#80DDD6]">Driven by People</span>
                     </h2>
-                    <h3 className="text-xl text-[#80DDD6] font-medium">
-                        R Sebastián Trinidad, Fundador
-                    </h3>
-                    <p className="text-lg text-[#E1E6FF] leading-relaxed">
-                        Sebastián convierte equipos caóticos en culturas colaborativas. Su método combina la rigurosidad de la gestión de proyectos con la empatía necesaria para entender que detrás de cada tarea hay un ser humano.
-                    </p>
-                    <p className="text-lg text-[#E1E6FF] leading-relaxed">
-                        Con años de experiencia transformando organizaciones, ha desarrollado un enfoque único que no solo mejora los números, sino también la calidad de vida de quienes los producen.
-                    </p>
 
-                    <div className="pt-4">
-                        <Button asChild variant="outline" size="lg" className="border-[#80DDD6] text-[#80DDD6] hover:bg-[#80DDD6]/10">
-                            <Link href="https://www.instagram.com/drivenbypeople_" target="_blank">
-                                Síguenos en Instagram
-                            </Link>
-                        </Button>
+                    <div className="space-y-4 text-lg text-slate-300 leading-relaxed">
+                        <p>
+                            "He visto demasiadas veces la misma historia: equipos brillantes que se queman haciendo cosas que no funcionan. Estrategias ambiciosas que mueren ahogadas en reuniones evitables. Personas talentosas atrapadas en el día a día que trabaja en su contra. Y me pregunté: ¿tiene que ser así?"
+                        </p>
+                        <p>
+                            Fundé <span className="text-[#80DDD6] font-semibold">Driven by People</span> sabiendo que no:
+                        </p>
+                        <blockquote className="border-l-4 border-[#80DDD6] pl-4 italic text-white text-xl my-6">
+                            "Lo que haces todos los días no debería entorpecer hacia dónde querés ir. Somos personas trabajando para personas y eso es <span className="text-[#80DDD6] font-semibold">una ventaja</span>"
+                        </blockquote>
+                        <p>
+                            Construimos sistemas que liberan el potencial de tu estrategia, dándole a tu equipo claridad y procesos que los potencian.
+                        </p>
                     </div>
+                    <Button variant="outline" className="w-full sm:w-auto text-lg h-14 px-8 border-[#80DDD6] text-[#80DDD6] hover:bg-[#80DDD6]/10" asChild>
+                        <Link href="https://www.linkedin.com/in/rsebastiantrinidad/" target="_blank">
+                            Conoce más en LinkedIn
+                        </Link>
+                    </Button>
                 </motion.div>
             </div>
         </Section>
